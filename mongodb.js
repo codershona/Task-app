@@ -68,23 +68,47 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // })
 
 
-    db.collection('tasks').updateMany({
-    	completed: false
-    }, {
-    	$set: {
+    // db.collection('tasks').updateMany({
+    // 	completed: false
+    // }, {
+    // 	$set: {
 
-    		completed: true
+    // 		completed: true
 
-    	}
-    }).then((result) => {
+    // 	}
+    // }).then((result) => {
 
-    	console.log(result.modifiedCount)
+    // 	console.log(result.modifiedCount)
 
 
-    }).catch((error) => {
-    	console.log(error)
+    // }).catch((error) => {
+    // 	console.log(error)
 
-    })
+    // })
+
+    // db.collection('users').deleteMany({
+
+    // 	age: 23
+
+    // }).then((result) => {
+    // 	console.log(result)
+
+    // }).catch((error) => {
+    // 	console.log(error)
+
+    // })
+
+
+    db.collection('tasks').deleteOne({ 
+    	description: "Renew the inspection!!!"
+
+    	 }).then((result) => {
+    	 	console.log(result)
+    	 }).catch((error) => {
+    	 	console.log(error)
+
+    	 })
+
 
      })
 
