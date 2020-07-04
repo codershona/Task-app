@@ -1,14 +1,27 @@
 // CRUD create read update delete 
 
-const mongodb = require('mongodb')
+// const mongodb = require('mongodb')
 
-const MongoClient = mongodb.MongoClient
+// const MongoClient = mongodb.MongoClient
+
+// const ObjectID = mongodb.ObjectID
+
+const { MongoClient, ObjectID } = require('mongodb')
 
  const connectionURL = 'mongodb://127.0.0.1:27017'
 
 // const connectionURL = 'mongodb://localhost:27017'
 
 const databaseName = 'task-manager'
+
+
+const id = new ObjectID()
+console.log(id.id.length)
+
+console.log(id.toHexString().length)
+
+// console.log(id.getTimestamp())
+
 
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
@@ -19,12 +32,20 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     }
 
-    // console.log('Connected correctly!!!')
-
     const db = client.db(databaseName)
 
+
+  })
+
+    // console.log('Connected correctly!!!')
+
+    
+
     // db.collection('users').insertOne({
-    // 	name: 'JOHN',
+    	
+    // 	_id: id,
+    // 	name: 'Jessica',
+
     // 	age: 24
 
     // }, (error, result) => {
@@ -33,6 +54,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // 	}
 
     // 	console.log(result.ops)
+
+    // 	 })
 
 
 
@@ -96,37 +119,32 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // 	})
 
 
-   db.collection('tasks-testing').insertMany([
+   // db.collection('tasks-testing').insertMany([
 
-     {
-    	description: 'Hello Node.js!!!',
-    	completed: true
+   //   {
+   //  	description: 'Hello Node.js!!!',
+   //  	completed: true
 
-    },{
-    	description: 'Working on task-manager-app!!!',
-    	completed: false
+   //  },{
+   //  	description: 'Working on task-manager-app!!!',
+   //  	completed: false
 
-    },{
-    	description: 'Working with mongodb databases!!!',
-    	completed: false
+   //  },{
+   //  	description: 'Working with mongodb databases!!!',
+   //  	completed: false
 
-    }
-
-
-    	], (error, result) => {
-    		if (error) {
-
-    			return console.log('Unabled to inserts tasks 4!!!')
-
-    		}
-
-    		console.log(result.ops)
+   //  }
 
 
-    	})
+   //  	], (error, result) => {
+   //  		if (error) {
+
+   //  			return console.log('Unabled to inserts tasks 4!!!')
+
+   //  		}
+
+   //  		console.log(result.ops)
 
 
-
-
-})
+   //  	})
 
