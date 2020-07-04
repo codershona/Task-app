@@ -15,10 +15,10 @@ const { MongoClient, ObjectID } = require('mongodb')
 const databaseName = 'task-manager'
 
 
-const id = new ObjectID()
-console.log(id.id.length)
+// const id = new ObjectID()
+// console.log(id.id.length)
 
-console.log(id.toHexString().length)
+// console.log(id.toHexString().length)
 
 // console.log(id.getTimestamp())
 
@@ -33,6 +33,21 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     }
 
     const db = client.db(databaseName)
+
+// db.collection('users').findOne({ name: 'Jerry' }, (error, user) => {
+
+    // db.collection('users').findOne({ name: 'Jenny' }, (error, user) => {
+    	db.collection('users').findOne({ name: 'Jenny', age: 1 }, (error, user) => {
+    	if (error) {
+    		return console.log('Unabled to fetch!!')
+
+    	}
+
+    	console.log(user)
+
+
+
+    })
 
 
   })
