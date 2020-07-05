@@ -133,13 +133,25 @@ task.save().then(() => {
 
 
 // Structuring a REST API:
-
+  // (Request):
 // POST /tasks HTTP/1.1
 // Accept: application/json
 // Connection: Keep-Alive
 // Authorization: Bearer eyJhbGciOiJUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI...
 
 // {"description": "Order new drill bits"}
+
+// (Response):
+
+// HTTP/1.1 201 Created 
+// Date: Sun, 28 Jul 2019 15:37:37 GMT
+// Server: Express
+// Content-Type: application/json
+
+// {"_id": "5c13ec6400d614654ed7e5b5", "description": "Order new drill bits", "completed": false}
+
+
+
 
 
 
