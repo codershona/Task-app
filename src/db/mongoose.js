@@ -132,3 +132,14 @@ task.save().then(() => {
 
 
 
+// Structuring a REST API:
+
+// POST /tasks HTTP/1.1
+// Accept: application/json
+// Connection: Keep-Alive
+// Authorization: Bearer eyJhbGciOiJUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI...
+
+// {"description": "Order new drill bits"}
+
+
+
