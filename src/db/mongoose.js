@@ -24,20 +24,46 @@ const User = mongoose.model('User', {
 
 // Creating user instance of it
 
-const me = new User({
-	name: 'Jonny',
-	 age: 22
-	// age: 'Mike'
+// const me = new User({
+// 	name: 'Jonny',
+// 	 age: 22
+// 	// age: 'Mike'
+
+// })
+
+// // Saving instance to the databases:
+// me.save().then(() => {
+//    console.log(me)
+
+// }).catch((error) => {
+// 	console.log('Error!!', error)
+
+// })
+
+const Task = mongoose.model('Task', {
+	description: {
+		type: String
+
+	},
+	completed: {
+		type: Boolean
+	}
+})
+
+
+const task = new Task({
+
+	description: 'Learns Mongoose Libraries',
+
+	completed: false
 
 })
 
-// Saving instance to the databases:
-me.save().then(() => {
-   console.log(me)
+task.save().then(() => {
+	console.log(task)
 
 }).catch((error) => {
-	console.log('Error!!', error)
+	console.log(error)
+
 
 })
-
-
