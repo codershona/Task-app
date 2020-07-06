@@ -58,6 +58,8 @@ app.get('/users/:id', (req, res) => {
 })
 
 
+
+
 // Resource Reading Endpoints: Part 1:
 
 app.get('/users', (req, res) => {
@@ -88,6 +90,36 @@ app.post('/tasks', (req, res) => {
 
 })
 
+
+// Challenge 3:
+
+app.get('/tasks', (req, res) => {
+	Task.find({}).then((tasks) => {
+		res.send(tasks)
+	}).catch((e) => {
+
+		res.status(500).send()
+
+	})
+})
+
+
+// second route:
+
+app.get('/tasks/:id', (req, res) => {
+	const _id = req.params.id
+
+	Task.findById(_id).then((task) => {
+		if (!task) {
+			return res.status(404).send()
+		}
+
+		res.send(task)
+
+	}).catch((e) => {
+		res.status(500).send()
+	})
+})
 
 
 
