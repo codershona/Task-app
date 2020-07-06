@@ -58,6 +58,11 @@ app.get('/users/:id', (req, res) => {
 })
 
 
+// Promise chaining:
+
+
+
+
 
 
 // Resource Reading Endpoints: Part 1:
