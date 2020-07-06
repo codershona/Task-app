@@ -58,10 +58,6 @@ app.get('/users/:id', (req, res) => {
 })
 
 
-// Promise chaining:
-
-
-
 
 
 

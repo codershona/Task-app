@@ -1,6 +1,5 @@
 // Challenge 2:
 
-
 require('../src/db/mongoose')
 
 const Task = require('../src/models/task')
@@ -23,3 +22,24 @@ const Task = require('../src/models/task')
 
 })
 
+
+
+// Challenge 2:
+
+const deleteTaskAndCount = async (id) => {
+
+	 const task = await Task.findByIdAndDelete(id)
+	// await Task.findByIdAndDelete(id)
+	const count = await Task.countDocuments({ completed: false })
+	return count
+
+}
+
+deleteTaskAndCount('5f01b385ea44be178bd27cad').then((count) => {
+	console.log(count)
+
+}).catch((e) => {
+
+	console.log(e)
+
+})
