@@ -188,3 +188,32 @@ app.listen(port, () => {
 })
 
 
+
+// securely storing passwords:
+
+const bcrypt = require('bcryptjs')
+
+const myFunction = async () => {
+   
+   const password = 'Green12345!'
+
+   const hashedPassword = await bcrypt.hash(password, 8)
+
+
+   console.log(password)
+
+   console.log(hashedPassword)
+
+   // const isMatch = await bcrypt.compare('green12345!', hashedPassword)
+   const isMatch = await bcrypt.compare('Green12345!', hashedPassword)
+   
+   console.log(isMatch)   
+
+}
+
+myFunction()
+
+// jonny -> hfiuerhfuiwahwahoite4i -> jonny
+// mypass -> mpoidhewkfhwenf
+
+// 
