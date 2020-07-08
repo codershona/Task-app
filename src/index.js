@@ -189,25 +189,39 @@ app.listen(port, () => {
 
 
 
+const jwt = require('jsonwebtoken')
+
 // securely storing passwords:
 
-const bcrypt = require('bcryptjs')
+// const bcrypt = require('bcryptjs')
 
 const myFunction = async () => {
+
+	const token = jwt.sign({ _id: 'abc123' }, 'thisismynodecourse', { expiresIn: '7 days' })
+   // const token = jwt.sign({ _id: 'abc123' }, 'thisismynodecourse', { expiresIn: '0 seconds' })
+
+	console.log(token)
+
+   const data = jwt.verify(token, 'thisismynodecourse')
+   // error: const data = jwt.verify(token, 'thisismynodecourseeee')
+   console.log(data)
    
-   const password = 'Green12345!'
+   // const password = 'Green12345!'
 
-   const hashedPassword = await bcrypt.hash(password, 8)
+   // const hashedPassword = await bcrypt.hash(password, 8)
 
 
-   console.log(password)
+   // console.log(password)
 
-   console.log(hashedPassword)
+   // console.log(hashedPassword)
 
-   // const isMatch = await bcrypt.compare('green12345!', hashedPassword)
-   const isMatch = await bcrypt.compare('Green12345!', hashedPassword)
+   // // const isMatch = await bcrypt.compare('green12345!', hashedPassword)
+   // const isMatch = await bcrypt.compare('Green12345!', hashedPassword)
    
-   console.log(isMatch)   
+   // console.log(isMatch)   
+
+
+
 
 }
 
