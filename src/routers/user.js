@@ -91,7 +91,25 @@ const router = new express.Router()
 })
 
 
+// logging in users:
 
+router.post('/users/login', async (req,res) => {
+
+	try {
+  const user = await User.findByCredentials(req.body.email, req.body.password)
+
+    res.send(user)		
+
+	} catch (e) {
+
+		res.status(400).send()
+		
+
+	}
+  
+
+
+})
 
 
 // Resource Reading Endpoints: Part 1:
