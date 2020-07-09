@@ -15,10 +15,44 @@ const app = express()
 const port = process.env.PORT || 3000
 
 
+// Express Middleware method 1:
+
+// app.use((req, res, next) => {
+
+//    // console.log(req.method, req.path)
+
+//    // next()
+
+//    if (req.method === 'GET') {
+//       res.send('GET request are disabled!!!')
+
+//    } else {
+//       next()
+//    }
+
+// })
+
+
+// setup middleware on your own, // Express Middleware method 2:
+
+app.use((req, res, next) => {
+
+   res.status(503).send('SITE IS CURRENTLY DOWN CHECK BACK SOON!!!')
+
+   
+
+})
+
+
+
+// old method
+
 app.use(express.json())
 
 app.use(userRouter)
 app.use(taskRouter)
+
+
 
 
 // const router = new express.Router()
