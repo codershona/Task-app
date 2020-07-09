@@ -35,13 +35,13 @@ const port = process.env.PORT || 3000
 
 // setup middleware on your own, // Express Middleware method 2:
 
-app.use((req, res, next) => {
+// app.use((req, res, next) => {
 
-   res.status(503).send('SITE IS CURRENTLY DOWN CHECK BACK SOON!!!')
+//    res.status(503).send('SITE IS CURRENTLY DOWN CHECK BACK SOON!!!')
 
-   
+// })
 
-})
+
 
 
 
