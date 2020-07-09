@@ -231,12 +231,12 @@ const jwt = require('jsonwebtoken')
 
 const myFunction = async () => {
 
-	const token = jwt.sign({ _id: 'abc123' }, 'thisismynodecourse', { expiresIn: '7 days' })
-   // const token = jwt.sign({ _id: 'abc123' }, 'thisismynodecourse', { expiresIn: '0 seconds' })
+	 const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcourse', { expiresIn: '7 days' })
+    // const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcourse', { expiresIn: '0 seconds' })
 
 	console.log(token)
 
-   const data = jwt.verify(token, 'thisismynodecourse')
+   const data = jwt.verify(token, 'thisismynewcourse')
    // error: const data = jwt.verify(token, 'thisismynodecourseeee')
    console.log(data)
    

@@ -119,6 +119,42 @@ router.post('/users/login', async (req,res) => {
 
 })
 
+router.post('/users/logout', auth, async (req, res) => {
+
+	try {
+		req.user.tokens = req.user.tokens.filter((token) => {
+
+			return token.token !== req.token
+
+		})
+
+		await req.user.save()
+
+		res.send(500).send()
+
+	} catch (e) {
+
+	}
+
+})
+
+// task 2:
+
+router.post('/users/logoutAll', auth, aync (req, res) => {
+	try {
+
+		req.user.tokens = []
+
+		await req.user.save[]
+		res.send()
+
+	} catch (e) {
+
+		res.status(500).send()
+
+	}
+})
+
 
 // Resource Reading Endpoints: Part 1:
 
