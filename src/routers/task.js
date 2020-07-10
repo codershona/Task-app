@@ -30,6 +30,8 @@ router.post('/tasks', auth, async (req, res) => {
 
 // Paginating Data:
 
+// GET /tasks?sortBy=createdAt:desc
+
 
 
 
@@ -38,6 +40,9 @@ router.post('/tasks', auth, async (req, res) => {
 router.get('/tasks', auth, async (req, res) => {
    
     const match = {}
+    const sort = {}
+
+
 
     if (req.query.completed) {
 
@@ -45,6 +50,16 @@ router.get('/tasks', auth, async (req, res) => {
 
 
     }
+
+    if (req.query.sortBy) {
+        const parts = req.query.sortBy.split(':')
+        // sort.completedAt
+        sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+
+
+
+    }
+
 
     try {
 
@@ -63,7 +78,16 @@ router.get('/tasks', auth, async (req, res) => {
             options: {
                 // limit: 2
                 limit: parseInt(req.query.limit),
-                skip: parseInt(req.query.skip)
+                skip: parseInt(req.query.skip),
+                // sort: {
+                //     // createdAt: 1
+                //     // createdAt: -1
+                //     // completed: -1
+                //      completed: 1
+
+                // }
+
+                sort
 
             }
 
