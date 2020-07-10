@@ -125,6 +125,8 @@ router.get('/users/me', auth, async (req, res) => {
 
       await req.user.remove()
 
+      
+
         // res.send(user)
         res.send(req.user)
 
