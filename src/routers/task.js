@@ -25,6 +25,16 @@ router.post('/tasks', auth, async (req, res) => {
 
 // GET /tasks?completed=true
 
+// limit skips:
+// Get /tasks?limit=10&skip=20
+
+// Paginating Data:
+
+
+
+
+
+
 router.get('/tasks', auth, async (req, res) => {
    
     const match = {}
@@ -48,7 +58,14 @@ router.get('/tasks', auth, async (req, res) => {
             //      completed: false
             // }
 
-            match
+            match,
+
+            options: {
+                // limit: 2
+                limit: parseInt(req.query.limit),
+                skip: parseInt(req.query.skip)
+
+            }
 
         }).execPopulate()
 
