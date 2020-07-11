@@ -22,57 +22,59 @@ const port = process.env.PORT || 3000
 
 // ---- ADDING SUPPORT FOR FILE UPLOADS: -----
 
-const multer = require('multer')
+// const multer = require('multer')
 
-const upload = multer({
-	dest: 'images',
-	limits: {
-		// files sizes setting:
+// const upload = multer({
+// 	dest: 'images',
+// 	limits: {
+// 		// files sizes setting:
 
-		fileSize: 1000000
+// 		fileSize: 1000000
 
-	},
+// 	},
 
-	fileFilter(req, file, cb) {
+// 	fileFilter(req, file, cb) {
 
-		// if (!file.originalname.endsWith('.pdf')) {
-			if (!file.originalname.match(/\.(doc|docx)$/)) {
+// 		// if (!file.originalname.endsWith('.pdf')) {
+// 			if (!file.originalname.match(/\.(doc|docx)$/)) {
 
-			// return cb(new Error('Please Upload a PDF'))
-			return cb(new Error('Please Upload a Word Document'))
+// 			// return cb(new Error('Please Upload a PDF'))
+// 			return cb(new Error('Please Upload a Word Document'))
 
-		}
+// 		}
 
-		cb(undefined, true)
+// 		cb(undefined, true)
 
-		// cb(new Error('File must be PDF'))
-		// cb(undefined, true)
-		// cb(undefined, false)
-
-
+// 		// cb(new Error('File must be PDF'))
+// 		// cb(undefined, true)
+// 		// cb(undefined, false)
 
 
-	}
 
 
-})
+// 	}
 
-// const errorMiddleware = (req, res, next) => {
-// 	throw new Error('From my Middleware')
-// }
 
-// app.post('/upload', upload.single('upload'), (req, res) => {
+// })
 
-// app.post('/upload', errorMiddleware, (req, res) => {
-	app.post('/upload', upload.single('upload'), (req, res) => {
+// // const errorMiddleware = (req, res, next) => {
+// // 	throw new Error('From my Middleware')
+// // }
 
-	res.send()
+// // app.post('/upload', upload.single('upload'), (req, res) => {
 
-}, (error, req, res, next) => {
+// // app.post('/upload', errorMiddleware, (req, res) => {
+// 	app.post('/upload', upload.single('upload'), (req, res) => {
 
-	res.status(400).send({ error: error.message })
+// 	res.send()
 
-})
+// }, (error, req, res, next) => {
+
+// 	res.status(400).send({ error: error.message })
+
+// })
+
+
 
 
 
