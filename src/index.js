@@ -57,9 +57,20 @@ const upload = multer({
 
 })
 
-app.post('/upload', upload.single('upload'), (req, res) => {
+// const errorMiddleware = (req, res, next) => {
+// 	throw new Error('From my Middleware')
+// }
+
+// app.post('/upload', upload.single('upload'), (req, res) => {
+
+// app.post('/upload', errorMiddleware, (req, res) => {
+	app.post('/upload', upload.single('upload'), (req, res) => {
 
 	res.send()
+
+}, (error, req, res, next) => {
+
+	res.status(400).send({ error: error.message })
 
 })
 
@@ -104,20 +115,20 @@ app.listen(port, () => {
 
 // hiding private data:
 
-const pet = {
-	name: 'Pong'
-}
+// const pet = {
+// 	name: 'Pong'
+// }
 
-pet.toJSON = function () {
-	// console.log(this)
-	// return this
+// pet.toJSON = function () {
+// 	// console.log(this)
+// 	// return this
 
-	return {}
+// 	return {}
 
-}
+// }
 
 
-console.log(JSON.stringify(pet))
+// console.log(JSON.stringify(pet))
 
 // const jwt = require('jsonwebtoken')
 
