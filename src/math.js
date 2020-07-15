@@ -34,6 +34,7 @@ module.exports = {
 
 	calculateTip,
 	fahrenheitToCelcius,
-	celciusToFahrenheit
+	celciusToFahrenheit,
+	add
 
 }
