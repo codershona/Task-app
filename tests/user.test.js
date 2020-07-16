@@ -62,6 +62,30 @@ test('Should signup a new user', async () => {
 
    }).expect(201)
 
+   // Assert that the database was changed correctly
+
+   const user = await user.findById(respone.body.user._id)
+
+   expect(user).not.toBeNull()
+
+   // Assertions about the response:
+
+   expect(response.body).toMatchObject({
+
+   	user: {
+   		name: 'Johny',
+   		email: 'john@example.com'
+
+
+   	},
+    
+    token: user.tokens[0].token
+
+
+   })
+
+   expect(user.password).not.toBe('MyPass777!')
+
 
 })
 
@@ -69,13 +93,17 @@ test('Should signup a new user', async () => {
 
 test('Should login exisiting user', async () => {
 
-	await request(app).post('/user/login').send({
+	// await request(app).post('/user/login').send({
+	const response = await request(app).post('/user/login').send({
       
       email: 'userOne.email',
       password: 'userOne.password'
   
 
 	}).expect(200)
+
+	const user = await User.findById(userOneId)
+	expect(response.body.token).toBe(user.tokens[1].token)
 
 })
 
@@ -127,6 +155,11 @@ test('Should delete account for user', async () => {
 	.send()
 	.expect(200)
 
+	// assertions:
+
+	const user = await User.findById(userOneId)
+    
+    expect(user).toBeNull()
 
 })
 
