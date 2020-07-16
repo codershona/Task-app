@@ -3,37 +3,41 @@ const request = require('supertest')
 const app = require('../src/app')
 
 const User = require('../src/models/user')
-
-const jwt = require('jsonwebtoken')
-
-const mongoose = require('mongoose')
-
-const userOneId = new mongoose.Types.ObjectId()
+const { userOneId, userOne, setupDatabase } = require('./fixtures/db')
 
 
-const userOne = {
+beforeEach(setupDatabase)
 
-	_id: userOneId,
+// const jwt = require('jsonwebtoken')
 
-	name: 'Mike',
-	email: 'mike@example.com',
-	password: '56what!',
+// const mongoose = require('mongoose')
 
-	tokens: [{
-		token: jwt.sign({ _id: userOneId }, process.env.JWT_SECRET)
+// const userOneId = new mongoose.Types.ObjectId()
 
 
-	}]
+// const userOne = {
 
-}
+// 	_id: userOneId,
 
-beforeEach(async () => {
+// 	name: 'Mike',
+// 	email: 'mike@example.com',
+// 	password: '56what!',
+
+// 	tokens: [{
+// 		token: jwt.sign({ _id: userOneId }, process.env.JWT_SECRET)
+
+
+// 	}]
+
+// }
+
+// beforeEach(async () => {
 
 	// console.log('beforeEach')
 
-	await User.deleteMany()
+	// await User.deleteMany()
 
-   await new User(userOne).save()
+ //   await new User(userOne).save()
 
 	// const user = new User(userOne)
 
@@ -41,7 +45,7 @@ beforeEach(async () => {
 
 
 
-})
+// })
 
 // afterEach(() => {
 
